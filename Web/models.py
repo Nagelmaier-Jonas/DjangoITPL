@@ -24,8 +24,8 @@ class StationHasConfigurationJT(models.Model):
     stationId = models.ForeignKey(Station, on_delete=models.CASCADE)
     configurationId = models.ForeignKey(Configuration, on_delete=models.CASCADE)
 
-    def __int__(self):
-        return self.id
+    def __str__(self):
+        return str(self.id)
 
 
 class Log(models.Model):
@@ -34,4 +34,4 @@ class Log(models.Model):
     station = models.ForeignKey(StationHasConfigurationJT, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.createdAt
+        return self.createdAt.strftime("%d.%m.%y %H:%M")
