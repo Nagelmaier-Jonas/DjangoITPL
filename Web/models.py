@@ -22,5 +22,4 @@ class StationHasConfigurationJT(models.Model):
 class Log(models.Model):
     message = models.TextField()
     createdAt = models.DateTimeField()
-    station = models.ForeignKey(StationHasConfigurationJT.stationId, on_delete=models.CASCADE)
-    configuration = models.ForeignKey(StationHasConfigurationJT.configurationId, on_delete=models.CASCADE)
+    station = models.ForeignKey(StationHasConfigurationJT, on_delete=models.CASCADE)
