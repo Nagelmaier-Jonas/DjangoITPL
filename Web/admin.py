@@ -4,10 +4,8 @@ from .models import *
 
 @admin.register(Station, Configuration, Log, StationHasConfigurationJT)
 class StationAdmin(admin.ModelAdmin):
-
-    @admin.display(empty_value='???')
-    def view_name(self, obj):
-        return obj.name
+    def __str__(self):
+        return self.name
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
