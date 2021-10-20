@@ -21,5 +21,5 @@ class StationHasConfigurationJT(models.Model):
 class Log(models.Model):
     message = models.TextField()
     createdAt = models.DateTimeField()
-    stationId = 
-    configurationId =
+    #stationId =
+    #configurationId =
