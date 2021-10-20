@@ -15,7 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from Web.views import get_station
 
 urlpatterns = [
+    path('test', get_station),
     path('', admin.site.urls)
 ]
