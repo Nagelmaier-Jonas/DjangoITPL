@@ -4,8 +4,7 @@ from .models import *
 
 @admin.register(Station, Configuration, Log, StationHasConfigurationJT)
 class StationAdmin(admin.ModelAdmin):
-    def __str__(self):
-        return self.name
+    pass
 
 
 class ConfigurationAdmin(admin.ModelAdmin):

@@ -8,9 +8,15 @@ class Station(models.Model):
     ip = models.CharField(max_length=25, unique=True)
     roomNr = models.CharField(max_length=10, unique=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Configuration(models.Model):
     command = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.command
 
 
 class StationHasConfigurationJT(models.Model):
@@ -18,8 +24,14 @@ class StationHasConfigurationJT(models.Model):
     stationId = models.ForeignKey(Station, on_delete=models.CASCADE)
     configurationId = models.ForeignKey(Configuration, on_delete=models.CASCADE)
 
+    def __int__(self):
+        return self.id
+
 
 class Log(models.Model):
     message = models.TextField()
     createdAt = models.DateTimeField()
     station = models.ForeignKey(StationHasConfigurationJT, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.createdAt
