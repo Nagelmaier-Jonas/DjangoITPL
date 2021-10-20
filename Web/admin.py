@@ -4,7 +4,10 @@ from .models import *
 
 @admin.register(Station, Configuration, Log, StationHasConfigurationJT)
 class StationAdmin(admin.ModelAdmin):
-    pass
+
+    @admin.display(empty_value='???')
+    def view_name(self, obj):
+        return obj.name
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
