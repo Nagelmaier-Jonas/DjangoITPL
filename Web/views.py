@@ -1,5 +1,4 @@
 import urllib.request
-
 from django.http.response import HttpResponseRedirect
 from django.shortcuts import render
 from Web.models import *
@@ -18,7 +17,6 @@ def get_station(request):
             log.message = form.cleaned_data['message']
             log.createdAt = form.cleaned_data['createdAt']
             log.station_id = form.cleaned_data['station']
-            urllib.request.urlopen("www.orf.at")
             log.save()
             # redirect to a new URL:
             return HttpResponseRedirect('test')
@@ -26,4 +24,4 @@ def get_station(request):
     # if a GET (or any other method) we'll create a blank form
     else:
         form = LogForm()
-    return render(request, 'station.html', {'form': form})
+    return render(request, 'log.html', {'form': form})

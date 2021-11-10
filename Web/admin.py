@@ -4,26 +4,30 @@ from .models import *
 
 class StationAdmin(admin.ModelAdmin):
     list_display = ["id", "name", "ip", "roomNr"]
-    pass
+    search_fields = ["name"]
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
     list_display = ["id", "command"]
-    pass
+    search_fields = ["command"]
+
 
 
 class LogAdmin(admin.ModelAdmin):
-    list_display = ["message", "createdAt", "get_configuration", "get_station"]
+    list_display = ["station", "message", "createdAt", "configuration"]
+    list_filter = ["createdAt"]
 
-    def get_configuration(self, obj):
-        return obj.station.configurationId
+    def configuration(self, obj):
+        return obj.station_jt.configurationId
 
-    def get_station(self, obj):
-        return obj.station.stationId
+    def station(self, obj):
+        return obj.station_jt.stationId
 
 
 class StationHasConfigurationJTAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["stationId", "configurationId"]
+    list_filter = ["stationId__name"]
+
 
 
 admin.site.register(Station, StationAdmin)
