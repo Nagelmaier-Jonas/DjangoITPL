@@ -3,14 +3,13 @@ from .models import *
 
 
 class StationAdmin(admin.ModelAdmin):
-    list_display = ["id", "name", "ip", "roomNr"]
+    list_display = ["id", "name", "url", "roomNr"]
     search_fields = ["name"]
 
 
 class ConfigurationAdmin(admin.ModelAdmin):
-    list_display = ["id", "command"]
+    list_display = ["id", "command", 'delay']
     search_fields = ["command"]
-
 
 
 class LogAdmin(admin.ModelAdmin):
@@ -27,7 +26,6 @@ class LogAdmin(admin.ModelAdmin):
 class StationHasConfigurationJTAdmin(admin.ModelAdmin):
     list_display = ["stationId", "configurationId"]
     list_filter = ["stationId__name"]
-
 
 
 admin.site.register(Station, StationAdmin)

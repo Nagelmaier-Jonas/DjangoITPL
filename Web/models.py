@@ -1,11 +1,11 @@
 import datetime
-
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 
 class Station(models.Model):
     name = models.CharField(max_length=25, unique=True)
-    ip = models.CharField(max_length=25, unique=True, default="???")
+    url = models.CharField(max_length=45, unique=True, default="???")
     roomNr = models.CharField(max_length=10, unique=True, default="???")
 
     def __str__(self):
@@ -14,6 +14,10 @@ class Station(models.Model):
 
 class Configuration(models.Model):
     command = models.CharField(max_length=200)
+    delay = models.IntegerField(validators=[
+            MaxValueValidator(100),
+            MinValueValidator(1)
+        ])
 
     def __str__(self):
         return self.command
