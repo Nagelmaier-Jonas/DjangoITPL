@@ -5,11 +5,21 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from Web.models import *
-from .forms import StationHasConfigurationJTForm
+try:
+    from .forms import StationHasConfigurationJTForm
+except:
+    pass
 from urllib import *
 
 @csrf_exempt
-def get_station(request):
+def get_station(request, url):
+    station = Station()
+    station.name = "New"
+    station.url = url
+    station.save()
+
+@csrf_exempt
+def set_command(request):
     command = StationHasConfigurationJT()
     # if this is a POST request we need to process the form data
     if request.method == 'POST':
