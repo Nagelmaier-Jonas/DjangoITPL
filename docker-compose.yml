@@ -1,0 +1,14 @@
+version: '3.1'
+
+services:
+  db2:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: WST_ITPL_server
+    ports: 
+      - "3305:3306"
+    volumes:
+      - ./data:/var/lib/mysql
