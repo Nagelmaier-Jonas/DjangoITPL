@@ -4,9 +4,9 @@ from django.db import models
 
 
 class Station(models.Model):
-    name = models.CharField(max_length=25, unique=True)
-    url = models.CharField(max_length=45, unique=True, default="???")
-    roomNr = models.CharField(max_length=10, unique=True, default="???")
+    name = models.CharField(max_length=25, default="New")
+    url = models.CharField(max_length=45, unique=True)
+    roomNr = models.CharField(max_length=10, default="???")
 
     def __str__(self):
         return self.name

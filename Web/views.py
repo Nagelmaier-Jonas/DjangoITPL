@@ -5,18 +5,21 @@ from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 
 from Web.models import *
+
 try:
     from .forms import StationHasConfigurationJTForm
 except:
     pass
 from urllib import *
 
+
 @csrf_exempt
 def get_station(request, url):
     station = Station()
-    station.name = "New"
     station.url = url
     station.save()
+    return HttpResponse("ok")
+
 
 @csrf_exempt
 def set_command(request):
@@ -41,12 +44,14 @@ def set_command(request):
     return render(request, 'configuration.html', {'form': form})
 
 
+@csrf_exempt
 def postUrl(request, command):
     data = urllib.parse.urlencode({'command': command.configurationId.command, 'stationId': command.stationId_id})
     data = data.encode('ascii')
     response = urllib.request.urlopen(command.stationId.url, data)
 
     print(response.info())
+
 
 @csrf_exempt
 def get_log(request):
