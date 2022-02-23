@@ -12,3 +12,12 @@ services:
       - "3305:3306"
     volumes:
       - ./data:/var/lib/mysql
+
+  web:
+    build: .
+    volumes:
+      - .:/my_app_dir
+    ports:
+      - "8000:8001"
+    depends_on:
+      - db
