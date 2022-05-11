@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-ac-5r)5#%)a)br-s9_#bj-0t+)l0gw=c%p8m5#d3u-nf3wbc%3
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.102.145", "127.0.0.1", "localhost"]
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -78,11 +78,11 @@ WSGI_APPLICATION = 'DjangoITPL.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wst_itpl_server',
+        'NAME': 'WST_ITPL_server',
         'USER': 'root',
         'PASSWORD': 'example',
-        'HOST': 'localhost',
-        'PORT': '3305',
+        'HOST': 'db2',
+        'PORT': '3306',
     }
 }
 
