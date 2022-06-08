@@ -15,16 +15,16 @@ class Station(models.Model):
 class Configuration(models.Model):
     command = models.CharField(max_length=200)
     delay = models.IntegerField(validators=[
-            MaxValueValidator(100),
-            MinValueValidator(1)
-        ])
+        MaxValueValidator(100),
+        MinValueValidator(1)
+    ])
 
     def __str__(self):
         return self.command
 
 
 class StationHasConfigurationJT(models.Model):
-    id = models.AutoField(primary_key = True)
+    id = models.AutoField(primary_key=True)
     stationId = models.ForeignKey(Station, on_delete=models.CASCADE)
     configurationId = models.ForeignKey(Configuration, on_delete=models.CASCADE)
 

@@ -1,12 +1,19 @@
 from django import forms
-from Web.models import Station, StationHasConfigurationJT, Configuration
+from Web.models import Station, Configuration
 
+def getStations():
+    for o in Station.objects.all():
+        yield (o.id, o.name)
+
+def getConfigurations():
+    for o in Configuration.objects.all():
+        yield (o.id, o.command)
 
 class StationHasConfigurationJTForm(forms.Form):
-    stationId = forms.ChoiceField(choices=[(o.id, o.name) for o in Station.objects.all()])
-    configurationId = forms.ChoiceField(choices=[(o.id, o.command) for o in Configuration.objects.all()])
+    def __init__(self, *args, request=None, **kwargs):
+        super(StationHasConfigurationJTForm, self).__init__(*args, **kwargs)
+        self.fields["stationId"].choices = getStations()
+        self.fields["configurationId"].choices = getConfigurations()
 
-
-
-stations = Station.objects.all()
-
+    stationId = forms.ChoiceField(choices=getStations())
+    configurationId = forms.ChoiceField(choices=getConfigurations())

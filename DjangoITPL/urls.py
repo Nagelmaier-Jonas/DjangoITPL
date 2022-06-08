@@ -19,7 +19,7 @@ from Web.views import get_station, get_log, set_command
 
 urlpatterns = [
     path('setstation/<str:url>', get_station),
-    path('test', set_command),
+    path('setcommand', set_command),
     path('log', get_log),
     path('', admin.site.urls)
 ]
